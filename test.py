@@ -91,6 +91,7 @@ def load_seq(seq):
     return seq
 
 def main(args):
+    print('WARNING: We observe a cysteine stabilization bias when examining DMS predictions (cysteine is often predicted to be the most stabilizing substitution). We are unsure if this is an artifact from the training data but attempts to fix this bias lead to worse metrics on the test set. Use cysteine predictions with caution.')
     # fix the seed for reproducibility
     seed = args.seed + misc.get_rank()
     torch.manual_seed(seed)

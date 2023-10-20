@@ -2,7 +2,7 @@
 
 By [Jeffrey Ouyang-Zhang](https://jozhang97.github.io/),  [Daniel J. Diaz](http://danny305.github.io), [Adam Klivans](https://www.cs.utexas.edu/users/klivans/), [Philipp Krähenbühl](http://www.philkr.net/)
 
-This repository is an official implementation of the paper [Predicting a Protein’s Stability under a Million Mutations](TODO).
+This repository is an official implementation of the paper [Predicting a Protein’s Stability under a Million Mutations](https://arxiv.org/abs/2310.12979).
 
 **TL; DR.** parallel decode thermodynamic stability of a protein under single and double mutations
 ![model](figs/model.jpeg)
@@ -153,6 +153,9 @@ torchrun --nproc_per_node=3 main_train.py \
 ## License
 
 This project builds heavily off of [MAE](https://github.com/facebookresearch/mae) and extensively uses [OpenFold](https://github.com/aqlaboratory/openfold/). Please refer to their original licenses for more details.
+
+## Disclaimer
+We observe a cysteine stabilization bias when examining DMS predictions (cysteine is often predicted to be the most stabilizing substitution). We are unsure if this is an artifact from the training data but attempts to fix this bias lead to worse metrics on the test set. Use cysteine predictions with caution.
 
 ## Citing Mutate Everything
 If you find Mutate Everything useful in your research, please consider citing:

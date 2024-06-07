@@ -24,6 +24,8 @@ def loss_single_double(pred: dict, ddg_dense1, ddg_dense2, batch, args, train) -
 
     losses = {}
 
+    neg_pred1 = -pred['mut1_ddg']
+
     if unknown_mask1.all():
         losses['loss1'] = 0. * pred['mut1_ddg'].sum()
     else:

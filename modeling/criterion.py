@@ -27,9 +27,9 @@ def loss_single_double(pred: dict, ddg_dense1, ddg_dense2, batch, args, train) -
     neg_pred1 = -pred['mut1_ddg']
 
     if unknown_mask1.all():
-        losses['loss1'] = 0. * pred['mut1_ddg'].sum()
+        losses['loss1'] = 0. * neg_pred1.sum()
     else:
-        losses['loss1'] = F.huber_loss(pred['mut1_ddg'][~unknown_mask1], ddg_dense1[~unknown_mask1]) * args.lambda_single
+        losses['loss1'] = F.huber_loss(neg_pred1[~unknown_mask1], ddg_dense1[~unknown_mask1]) * args.lambda_single
 
     if args.multi_dec == 'epistasis':
         # unknown if any of (ddg_ij, ddg_i, ddg_j) are unknown

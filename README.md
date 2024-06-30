@@ -18,7 +18,7 @@ This repository is an official implementation of the paper [Predicting a Protein
 cDNA,ProTherm Multiple,s669 are available [here](https://drive.google.com/drive/folders/1psp5LBnAWpwkzGtsWD9SJgauo8xX_eaK?usp=sharing). It can also be prepared:
 ```
 pip install gdown
-gdown 1cn69cNCOIOmBSDYm5hTrdN0Ioozr7nVc
+gdown 1akfHt1WLbC345DgZwZ5kLeMUADq9XB7y
 unzip mutate_everything_data
 mv mutate_everything_data data
 ```

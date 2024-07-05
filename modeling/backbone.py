@@ -42,7 +42,7 @@ class AlphaFoldBackbone(nn.Module):
 
         ## Hard-coded configs
         config = model_config('finetuning', train=not self.args.eval)
-        config.globals.use_flash = True
+        config.globals.use_flash = False
         config.model.template.enabled = False
         config.model.evoformer_stack.tune_chunk_size = self.args.eval
         config.data.train.max_extra_msa = self.args.n_extra_msa_seqs

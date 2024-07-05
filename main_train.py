@@ -25,7 +25,7 @@ def get_args_parser():
     parser.add_argument('--head_dim', type=int, default=128)
     parser.add_argument('--backbone', default='esm2_t33_650M_UR50D', help='af|esm2_t33_650M_UR50D')
     parser.add_argument('--finetune_backbone', type=str, default='models/finetuning_ptm_2.pt')
-    parser.add_argument('--freeze_at', default=0, help='freeze backbone up to layer X')
+    parser.add_argument('--freeze_at', default=0, help='freeze backbone up to layer X', type=int)
 
     # af params
     parser.add_argument('--n_msa_seqs', type=int, default=128)

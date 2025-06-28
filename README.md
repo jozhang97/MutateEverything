@@ -7,6 +7,9 @@ This repository is an official implementation of the paper [Predicting a Protein
 **TL; DR.** parallel decode thermodynamic stability of a protein under single and double mutations
 ![model](figs/model.jpeg)
 
+🚨 [06/28/2025] We’ve released an easy-to-use [Colab notebook](https://colab.research.google.com/drive/1m21QGoPpKDcdymjkFHvOJbo-mQfqLoqa?usp=sharing) for running MutateEverything with the ISM/ESM backbone.
+Just paste your protein sequence to get started — no setup required!
+
 ## Main Results
 
 | Method | Backbone | S669 Spearman | cDNA2 nDCG | Total Train time (GPU hours) | URL |

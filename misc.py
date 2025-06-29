@@ -362,10 +362,18 @@ def save_model(args, epoch, model, model_without_ddp, optimizer, loss_scaler):
         return checkpoint_paths
 
 
+def torch_load(path, **kwargs):
+    try:
+        return torch.load(path, **kwargs)
+    except:
+        print('newer versions of pytorch want weights_only=False')
+        return torch.load(path, **kwargs, weights_only=False)
+
+
 def load_model(args, model_without_ddp, optimizer, loss_scaler):
     if args.finetune and not args.resume:
         print(f'Loading finetune checkpoint from {args.finetune}')
-        checkpoint = torch.load(args.finetune, map_location='cpu')
+        checkpoint = torch_load(args.finetune, map_location='cpu')
         if 'module.' in list(checkpoint['model'].keys())[0]:
             checkpoint['model'] = {k[len('module.'):]: v for k, v in checkpoint['model'].items()}
         msg = model_without_ddp.load_state_dict(checkpoint['model'], strict=False)
@@ -375,7 +383,7 @@ def load_model(args, model_without_ddp, optimizer, loss_scaler):
             checkpoint = torch.hub.load_state_dict_from_url(
                 args.resume, map_location='cpu', check_hash=True)
         else:
-            checkpoint = torch.load(args.resume, map_location='cpu')
+            checkpoint = torch_load(args.resume, map_location='cpu')
         if 'module.' in list(checkpoint['model'].keys())[0]:
             checkpoint['model'] = {k[len('module.'):]: v for k, v in checkpoint['model'].items()}
         model_without_ddp.load_state_dict(checkpoint['model'])
